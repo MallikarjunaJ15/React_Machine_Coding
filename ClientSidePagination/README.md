@@ -1,16 +1,21 @@
-# React + Vite
+# React Client-Side Pagination
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A lightweight, dependency-free implementation of client-side pagination built with React. This project demonstrates how to handle large datasets natively using JavaScript array methods and React state management without relying on external component libraries.
 
-Currently, two official plugins are available:
+## Features
+- **Dynamic Slicing:** Uses `Array.prototype.slice()` to chunk data locally based on the active page.
+- **Derived State:** Total pages and current data chunks are calculated on the fly, preventing stale state bugs.
+- **Boundary Handling:** Pagination controls automatically disable at the beginning (Page 1) and end of the dataset.
+- **Responsive CSS Grid:** Products are displayed in a clean, modern card layout that adapts to screen size.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## The Core Logic
+The application fetches a dataset of 500 products and paginates them efficiently using the following logic:
 
-## React Compiler
+```javascript
+const perPageContent = 30;
+const totalPage = Math.ceil(data.length / perPageContent);
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+const startIndex = (currentPage - 1) * perPageContent;
+const endIndex = currentPage * perPageContent;
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+const currentData = data.slice(startIndex, endIndex);
