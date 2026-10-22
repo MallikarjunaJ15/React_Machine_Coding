@@ -1,16 +1,18 @@
-# React + Vite
+# React Multi-Step Form (Machine Coding Practice)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A multi-step user onboarding flow built with React and Tailwind CSS. This project focuses on solving common state-management and rendering challenges encountered during frontend machine coding rounds.
 
-Currently, two official plugins are available:
+## Technical Highlights & Architecture
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+* **Derived State over `useState` for Validation:** 
+  Form validation errors (e.g., `nameError`, `emailError`) are calculated dynamically during the render cycle rather than stored in a separate `useState`. This guarantees a pure render cycle and eliminates infinite re-render loops caused by state updates inside `if` blocks.
+  
+* **Object State Integrity:**
+  Utilizes the ES6 spread operator (`...profileData`) within controlled component `onChange` handlers to ensure unmodified sibling properties are not overwritten when updating specific object keys.
 
-## React Compiler
+* **API Payload Flattening:**
+  The final `handleSubmit` function flattens the decoupled UI state (`profileData`, `interest`, `setting`) into a single, un-nested JavaScript object. This mirrors standard REST API payload expectations and prevents downstream `Cannot read properties of undefined` errors when rendering lists.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Tech Stack
+* React (Functional Components & Hooks)
+* Tailwind CSS (Utility-first styling, Flexbox layouts)
