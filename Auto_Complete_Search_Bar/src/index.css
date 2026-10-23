@@ -1,0 +1,85 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #0f172a;
+  color: #f8fafc;
+  font-family: system-ui, -apple-system, sans-serif;
+  display: flex;
+  justify-content: center;
+  padding-top: 10vh;
+  min-height: 100vh;
+}
+
+.App {
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  position: relative;
+}
+
+h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #e2e8f0;
+  text-align: center;
+}
+
+input {
+  width: 100%;
+  padding: 1rem 1.25rem;
+  font-size: 1rem;
+  background-color: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 12px 12px 0 0;
+  color: #f8fafc;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+}
+
+input::placeholder {
+  color: #64748b;
+}
+
+.dropdown-container {
+  position: absolute;
+  top: 100px;
+  left: 0;
+  width: 100%;
+  background-color: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  z-index: 50;
+}
+
+.dropdown-container p {
+  padding: 0.875rem 1.25rem;
+  cursor: pointer;
+  color: #cbd5e1;
+  transition: background-color 0.15s, color 0.15s;
+  border-bottom: 1px solid #334155;
+  cursor: pointer;
+}
+
+.dropdown-container p:last-child {
+  border-bottom: none;
+}
+
+.dropdown-container p:hover {
+  background-color: #2dd4bf;
+  color: #0f172a;
+  font-weight: 500;
+}
