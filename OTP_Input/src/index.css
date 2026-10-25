@@ -1,0 +1,57 @@
+body {
+  background-color: #0f172a;
+  color: #f8fafc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  font-family:
+    system-ui,
+    -apple-system,
+    sans-serif;
+}
+
+.App {
+  background: #1e293b;
+  padding: 2.5rem;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.input-container {
+  display: flex;
+  gap: 12px;
+}
+
+.otp-input {
+  width: 48px;
+  height: 56px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 600;
+  color: #e2e8f0;
+  background-color: #0f172a;
+  border: 2px solid #334155;
+  border-radius: 10px;
+  outline: none;
+  transition: all 0.2s ease-in-out;
+  /* Removes the up/down arrows on number inputs if you ever change type="number" */
+  -moz-appearance: textfield;
+}
+
+.otp-input:hover {
+  border-color: #475569;
+}
+
+/* The magic focus state */
+.otp-input:focus {
+  border-color: #6366f1; /* Indigo SaaS accent */
+  background-color: #1e293b;
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.2);
+  transform: translateY(-2px); /* Slight pop effect */
+}
