@@ -1,16 +1,20 @@
-# React + Vite
+# React OTP Input Component
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A highly optimized, production-ready One-Time Password (OTP) input component built in React. This project demonstrates advanced DOM manipulation, focus management, and keyboard event handling.
 
-Currently, two official plugins are available:
+## Features
+- **Auto-Forward Navigation:** Automatically shifts focus to the next input field upon valid entry.
+- **Smart Backspace Handling:** Uses `onKeyDown` listeners to detect backspace presses on empty inputs, seamlessly shifting focus to the previous field.
+- **Auto-Mount Focus:** Automatically focuses the first input field on initial render via `useEffect`.
+- **Premium UI/UX:** Styled with a modern B2B SaaS dark theme, featuring subtle transitions, focus rings, and hover states.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## The Core Logic
+Bridging React state with physical DOM focus requires tracking each input via a `useRef` array. The backspace edge case is handled by intercepting the native keyboard event:
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```javascript
+const handleKeyDown = (e, index) => {
+  // If Backspace is pressed on an empty input, focus the previous input
+  if (e.key === "Backspace" && !otp[index] && index > 0) {
+    inputRefs.current[index - 1].focus();
+  }
+};
